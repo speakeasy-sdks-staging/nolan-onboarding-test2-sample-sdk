@@ -9,7 +9,7 @@ generation:
     disableComments: false
     omitDescriptionIfSummaryPresent: false
   baseServerURL: ""
-  sdkClassName: speakeasybar
+  sdkClassName: The-Speakeasy-Bar
   singleTagPerOp: false
   tagNamespacingDisabled: false
   telemetryEnabled: false
@@ -23,6 +23,11 @@ features:
     globalServerURLs: 2.82.0
     inputOutputModels: 2.81.1
     serverIDs: 2.81.1
+go:
+  version: 0.0.1
+  clientServerStatusCodesAsErrors: true
+  maxMethodParams: 0
+  packageName: github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk
 python:
   version: 1.26.0
   author: Speakeasy
