@@ -18,24 +18,7 @@ externalDocs:
 servers:
   - url: https://speakeasy.bar
     description: The production server.
-    x-speakeasy-server-id: prod
-  - url: https://staging.speakeasy.bar
-    description: The staging server.
-    x-speakeasy-server-id: staging
-  - url: https://{organization}.{environment}.speakeasy.bar
-    description: A per-organization and per-environment API.
-    x-speakeasy-server-id: customer
-    variables:
-      organization:
-        description: The organization name. Defaults to a generic organization.
-        default: api
-      environment:
-        description: The environment name. Defaults to the production environment.
-        default: prod
-        enum:
-          - prod
-          - staging
-          - dev
+    
 security:
   - apiKey: []
 tags:
