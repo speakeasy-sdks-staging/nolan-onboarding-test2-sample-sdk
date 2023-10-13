@@ -1,4 +1,5 @@
-# ingredients
+# Ingredients
+(*Ingredients*)
 
 ## Overview
 
@@ -6,42 +7,55 @@ The ingredients endpoints.
 
 ### Available Operations
 
-* [list_ingredients](#list_ingredients) - Get a list of ingredients.
+* [ListIngredients](#listingredients) - Get a list of ingredients.
 
-## list_ingredients
+## ListIngredients
 
 Get a list of ingredients, if authenticated this will include stock levels and product codes otherwise it will only include public information.
 
 ### Example Usage
 
-```python
-import speakeasybar
-from speakeasybar.models import operations, shared
+```go
+package main
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+import(
+	"context"
+	"log"
+	nolanonboardingtest2samplesdk "github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/operations"
 )
 
+func main() {
+    s := nolanonboardingtest2samplesdk.New(
+        nolanonboardingtest2samplesdk.WithSecurity(""),
+    )
 
-res = s.ingredients.list_ingredients(ingredients=[
-    'magnam',
-    'debitis',
-])
+    ctx := context.Background()
+    res, err := s.Ingredients.ListIngredients(ctx, operations.ListIngredientsRequest{
+        Ingredients: []string{
+            "Cloned",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
 
-if res.ingredients is not None:
-    # handle response
+    if res.Ingredients != nil {
+        // handle response
+    }
+}
 ```
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `ingredients`                                                                         | list[*str*]                                                                           | :heavy_minus_sign:                                                                    | A list of ingredients to filter by. If not provided all ingredients will be returned. |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `request`                                                                              | [operations.ListIngredientsRequest](../../models/operations/listingredientsrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 
 ### Response
 
-**[operations.ListIngredientsResponse](../../models/operations/listingredientsresponse.md)**
+**[*operations.ListIngredientsResponse](../../models/operations/listingredientsresponse.md), error**
 

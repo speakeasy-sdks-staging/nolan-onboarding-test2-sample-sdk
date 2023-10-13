@@ -1,4 +1,5 @@
-# drinks
+# Drinks
+(*Drinks*)
 
 ## Overview
 
@@ -6,75 +7,101 @@ The drinks endpoints.
 
 ### Available Operations
 
-* [get_drink](#get_drink) - Get a drink.
-* [list_drinks](#list_drinks) - Get a list of drinks.
+* [GetDrink](#getdrink) - Get a drink.
+* [ListDrinks](#listdrinks) - Get a list of drinks.
 
-## get_drink
+## GetDrink
 
 Get a drink by name, if authenticated this will include stock levels and product codes otherwise it will only include public information.
 
 ### Example Usage
 
-```python
-import speakeasybar
-from speakeasybar.models import operations, shared
+```go
+package main
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+import(
+	"context"
+	"log"
+	nolanonboardingtest2samplesdk "github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/operations"
 )
 
+func main() {
+    s := nolanonboardingtest2samplesdk.New(
+        nolanonboardingtest2samplesdk.WithSecurity(""),
+    )
 
-res = s.drinks.get_drink(name='deserunt')
+    ctx := context.Background()
+    res, err := s.Drinks.GetDrink(ctx, operations.GetDrinkRequest{
+        Name: "North District",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
 
-if res.drink is not None:
-    # handle response
+    if res.Drink != nil {
+        // handle response
+    }
+}
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |
+| `request`                                                                | [operations.GetDrinkRequest](../../models/operations/getdrinkrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
 
 
 ### Response
 
-**[operations.GetDrinkResponse](../../models/operations/getdrinkresponse.md)**
+**[*operations.GetDrinkResponse](../../models/operations/getdrinkresponse.md), error**
 
 
-## list_drinks
+## ListDrinks
 
 Get a list of drinks, if authenticated this will include stock levels and product codes otherwise it will only include public information.
 
 ### Example Usage
 
-```python
-import speakeasybar
-from speakeasybar.models import operations, shared
+```go
+package main
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+import(
+	"context"
+	"log"
+	nolanonboardingtest2samplesdk "github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/operations"
 )
 
+func main() {
+    s := nolanonboardingtest2samplesdk.New(
+        nolanonboardingtest2samplesdk.WithSecurity(""),
+    )
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.BEER)
+    ctx := context.Background()
+    res, err := s.Drinks.ListDrinks(ctx, operations.ListDrinksRequest{})
+    if err != nil {
+        log.Fatal(err)
+    }
 
-if res.drinks is not None:
-    # handle response
+    if res.Drinks != nil {
+        // handle response
+    }
+}
 ```
 
 ### Parameters
 
 | Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `drink_type`                                                                 | [Optional[shared.DrinkType]](../../models/shared/drinktype.md)               | :heavy_minus_sign:                                                           | The type of drink to filter by. If not provided all drinks will be returned. |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.ListDrinksRequest](../../models/operations/listdrinksrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 
 
 ### Response
 
-**[operations.ListDrinksResponse](../../models/operations/listdrinksresponse.md)**
+**[*operations.ListDrinksResponse](../../models/operations/listdrinksresponse.md), error**
 

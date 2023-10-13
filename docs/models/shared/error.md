@@ -1,11 +1,9 @@
 # Error
 
-An unknown error occurred interacting with the API.
-
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *Optional[str]*    | :heavy_minus_sign: | N/A                |
-| `message`          | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `Code`             | **string*          | :heavy_minus_sign: | N/A                |
+| `Message`          | **string*          | :heavy_minus_sign: | N/A                |

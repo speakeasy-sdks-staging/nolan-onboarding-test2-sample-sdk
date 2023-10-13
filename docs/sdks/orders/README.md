@@ -1,4 +1,5 @@
-# orders
+# Orders
+(*Orders*)
 
 ## Overview
 
@@ -6,46 +7,60 @@ The orders endpoints.
 
 ### Available Operations
 
-* [create_order](#create_order) - Create an order.
+* [CreateOrder](#createorder) - Create an order.
 
-## create_order
+## CreateOrder
 
 Create an order for a drink.
 
 ### Example Usage
 
-```python
-import speakeasybar
-from speakeasybar.models import callbacks, operations, shared
+```go
+package main
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+import(
+	"context"
+	"log"
+	nolanonboardingtest2samplesdk "github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/callbacks"
 )
 
+func main() {
+    s := nolanonboardingtest2samplesdk.New(
+        nolanonboardingtest2samplesdk.WithSecurity(""),
+    )
 
-res = s.orders.create_order(request_body=[
-    shared.OrderInput(
-        product_code='APM-1F2D3',
-        quantity=272656,
-        type=shared.OrderType.DRINK,
-    ),
-], callback_url='molestiae')
+    ctx := context.Background()
+    res, err := s.Orders.CreateOrder(ctx, operations.CreateOrderRequest{
+        RequestBody: []shared.OrderInput{
+            shared.OrderInput{
+                ProductCode: "APM-1F2D3",
+                Quantity: 26535,
+                Type: shared.OrderTypeDrink,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
 
-if res.order is not None:
-    # handle response
+    if res.Order != nil {
+        // handle response
+    }
+}
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request_body`                                               | list[[shared.OrderInput](../../models/shared/orderinput.md)] | :heavy_check_mark:                                           | N/A                                                          |
-| `callback_url`                                               | *Optional[str]*                                              | :heavy_minus_sign:                                           | The url to call when the order is updated.                   |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.CreateOrderRequest](../../models/operations/createorderrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 
 ### Response
 
-**[operations.CreateOrderResponse](../../models/operations/createorderresponse.md)**
+**[*operations.CreateOrderResponse](../../models/operations/createorderresponse.md), error**
 

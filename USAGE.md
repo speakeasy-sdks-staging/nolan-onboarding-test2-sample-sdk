@@ -1,20 +1,32 @@
 <!-- Start SDK Example Usage -->
 
 
-```python
-import speakeasybar
-from speakeasybar.models import operations, shared
+```go
+package main
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+import (
+	"context"
+	nolanonboardingtest2samplesdk "github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/shared"
+	"log"
 )
 
+func main() {
+	s := nolanonboardingtest2samplesdk.New(
+		nolanonboardingtest2samplesdk.WithSecurity(""),
+	)
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
+	ctx := context.Background()
+	res, err := s.Drinks.ListDrinks(ctx, operations.ListDrinksRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-if res.drinks is not None:
-    # handle response
+	if res.Drinks != nil {
+		// handle response
+	}
+}
+
 ```
 <!-- End SDK Example Usage -->

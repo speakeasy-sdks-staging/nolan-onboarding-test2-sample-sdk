@@ -59,27 +59,39 @@ Once you're finished iterating and happy with the output push only the latest ve
 ## SDK Installation
 
 ```bash
-pip install git+https://github.com/speakeasy-sdks/template-sdk.git
+go get github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+```go
+package main
 
-```python
-import speakeasybar
-from speakeasybar.models import operations, shared
-
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+import (
+	"context"
+	nolanonboardingtest2samplesdk "github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks-staging/nolan-onboarding-test2-sample-sdk/pkg/models/shared"
+	"log"
 )
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
+func main() {
+	s := nolanonboardingtest2samplesdk.New(
+		nolanonboardingtest2samplesdk.WithSecurity(""),
+	)
 
-if res.drinks is not None:
-    # handle response
+	ctx := context.Background()
+	res, err := s.Drinks.ListDrinks(ctx, operations.ListDrinksRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Drinks != nil {
+		// handle response
+	}
+}
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -87,27 +99,45 @@ if res.drinks is not None:
 ## Available Resources and Operations
 
 
-### [authentication](docs/sdks/authentication/README.md)
+### [Authentication](docs/sdks/authentication/README.md)
 
-* [authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
+* [Authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
 
-### [config](docs/sdks/config/README.md)
+### [Config](docs/sdks/config/README.md)
 
-* [subscribe_to_webhooks](docs/sdks/config/README.md#subscribe_to_webhooks) - Subscribe to webhooks.
+* [SubscribeToWebhooks](docs/sdks/config/README.md#subscribetowebhooks) - Subscribe to webhooks.
 
-### [drinks](docs/sdks/drinks/README.md)
+### [Drinks](docs/sdks/drinks/README.md)
 
-* [get_drink](docs/sdks/drinks/README.md#get_drink) - Get a drink.
-* [list_drinks](docs/sdks/drinks/README.md#list_drinks) - Get a list of drinks.
+* [GetDrink](docs/sdks/drinks/README.md#getdrink) - Get a drink.
+* [ListDrinks](docs/sdks/drinks/README.md#listdrinks) - Get a list of drinks.
 
-### [ingredients](docs/sdks/ingredients/README.md)
+### [Ingredients](docs/sdks/ingredients/README.md)
 
-* [list_ingredients](docs/sdks/ingredients/README.md#list_ingredients) - Get a list of ingredients.
+* [ListIngredients](docs/sdks/ingredients/README.md#listingredients) - Get a list of ingredients.
 
-### [orders](docs/sdks/orders/README.md)
+### [Orders](docs/sdks/orders/README.md)
 
-* [create_order](docs/sdks/orders/README.md#create_order) - Create an order.
+* [CreateOrder](docs/sdks/orders/README.md#createorder) - Create an order.
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Go Types -->
+
+<!-- End Go Types -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 
